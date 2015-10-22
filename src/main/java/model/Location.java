@@ -1,12 +1,16 @@
 package model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by Paul on 22.10.2015.
  */
 public class Location {
 
-
+    @Min(1)
     private int rooms;
+    @NotNull
     private String buildingName;
 
     public Location(){

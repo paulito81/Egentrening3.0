@@ -8,6 +8,12 @@ import javax.validation.constraints.Pattern;
 /**
  * Created by Paul on 22.10.2015.
  */
+@Entity
+@NamedQueries(value = {
+        @NamedQuery(name = "User.getAllUsers", query = "select u from User u"),
+        @NamedQuery(name = "User.deleteUser", query = "delete from User u where u.id = :id"),
+})
+@SequenceGenerator(name = "User.sequence", sequenceName = "SEQ_USER", initialValue = 50)
 public class User {
 
     @Id
