@@ -10,6 +10,7 @@ import java.util.Optional;
 /**
  * Created by Paul on 22.10.2015.
  */
+@JPADAOQualifier
 public class JPADAO implements UserDAO {
     @PersistenceContext(unitName = "user")
     private EntityManagerFactory factory;

@@ -12,6 +12,7 @@ import java.util.Optional;
 /**
  * Created by Paul on 22.10.2015.
  */
+@H2DAOQualifier
 public class H2UserDAO implements UserDAO{
     private static Connection connection;
 

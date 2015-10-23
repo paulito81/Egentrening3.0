@@ -1,3 +1,5 @@
+import console.LocationH2Tester;
+import console.LocationJPATester;
 import console.UserH2Tester;
 import console.UserJPATester;
 import org.jboss.weld.environment.se.Weld;
@@ -12,14 +14,22 @@ import javax.inject.Inject;
 public class Main {
 
     @Inject
-    private UserJPATester jpaTester;
+    private UserJPATester userJPATester;
 
     @Inject
-    private UserH2Tester h2Tester;
+    private LocationJPATester locationJPATester;
+
+    @Inject
+    private UserH2Tester userH2Tester;
+
+    @Inject
+    private LocationH2Tester locationH2Tester;
 
     public void callService() {
-        jpaTester.execute();
-        h2Tester.execute();
+        userJPATester.execute();
+        userH2Tester.execute();
+        locationH2Tester.execute();
+        locationJPATester.execute();
     }
 
     public static void main(String[] args) {
