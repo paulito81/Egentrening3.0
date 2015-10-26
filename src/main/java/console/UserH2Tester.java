@@ -1,7 +1,7 @@
 package console;
 
 import infrastructure.H2DAOQualifier;
-import infrastructure.UserDAO;
+import infrastructure.user.UserDAO;
 import model.Type;
 import model.User;
 
@@ -39,7 +39,6 @@ public class UserH2Tester {
         System.out.println("\n");
         deleteAUserH2(4);
         getAllUsersH2();
-        dropTable("User");
 
     }
 
@@ -96,9 +95,4 @@ public class UserH2Tester {
         return id != 0 && userDAO.deleteUser(id);
     }
 
-    public void dropTable(String tableName) {
-
-        display.dropTable(tableName);
-
-    }
 }

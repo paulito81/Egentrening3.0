@@ -1,8 +1,7 @@
 package console;
 
-import infrastructure.H2LocationQualifier;
 import infrastructure.JPALocationQualifier;
-import infrastructure.LocationDAO;
+import infrastructure.location.LocationDAO;
 
 import javax.inject.Inject;
 

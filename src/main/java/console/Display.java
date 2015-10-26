@@ -49,10 +49,5 @@ public class Display {
             System.err.println("Databasen er tom! ");
     }
 
-    public void dropTable(String tableName) {
-        if (!tableName.isEmpty()) {
-            System.err.println("Tablename: '" + tableName + "´ where dropped!");
-        }else
-            System.err.println("Ingen tabell ble funnet..");
-    }
+
 }

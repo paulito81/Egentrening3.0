@@ -1,7 +1,9 @@
 package infrastructure;
 
+import infrastructure.user.UserDAO;
 import model.User;
 
+import javax.annotation.PreDestroy;
 import javax.persistence.*;
 import java.sql.SQLException;
 import java.util.List;
@@ -31,7 +33,7 @@ public class JPADAO implements UserDAO {
         entityManager.persist(user);
         return user;
     }
-
+    @PreDestroy
     private void close(){
         entityManager.close();
         factory.close();

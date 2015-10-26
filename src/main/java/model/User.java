@@ -4,6 +4,7 @@ import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 /**
  * Created by Paul on 22.10.2015.
@@ -28,6 +29,12 @@ public class User {
     @NotNull
     @Enumerated(EnumType.STRING)
     private Type workType;
+
+
+    // TODO !!
+    @OneToMany
+    @JoinTable
+    List<Topic> topicList;
 
     public User(String email, String password, Type workType) {
         this.email = email;
