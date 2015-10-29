@@ -1,12 +1,8 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
  * Created by Paul on 22.10.2015.
@@ -15,30 +11,42 @@ import java.util.List;
 public class Location {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     @NotNull @Min(1)
-    private int rooms;
+    private int room;
     @NotNull
     private String buildingName;
 
-    @JoinTable
-    @OneToMany
-    List<Topic> topicList;
+
+    public Location(int id, int room, String buildingName) {
+        this.id = id;
+        this.room = room;
+        this.buildingName = buildingName;
+    }
+
 
     public Location(){
     }
 
-    public Location(int rooms, String buildingName) {
-        this.rooms = rooms;
-        this.buildingName = buildingName;
+    public int getId() {
+        return id;
     }
 
-    public int getRooms() {
-        return rooms;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setRooms(int rooms) {
-        this.rooms = rooms;
+
+
+
+    public int getRoom() {
+        return room;
+    }
+
+    public void setRoom(int rooms) {
+        this.room = rooms;
     }
 
     public String getBuildingName() {

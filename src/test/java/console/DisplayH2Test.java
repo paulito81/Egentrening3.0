@@ -1,36 +1,32 @@
 package console;
 
-import com.sun.tools.classfile.Opcode;
+import console.H2.Display_H2;
 import junit.framework.Assert;
 import model.Type;
 import model.User;
-import org.hibernate.mapping.Set;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Paul on 23.10.2015.
  */
-public class DisplayTest {
-    private Display display;
+public class DisplayH2Test {
+    private Display_H2 displayH2;
     private User user1, user2, user3;
     private List<User> userList;
 
     @Before
     public void setUp() throws Exception {
-             display = new Display();
+             displayH2 = new Display_H2();
     }
 
     @After
     public void tearDown() throws Exception {
-        display = null;
+        displayH2 = null;
 
     }
 

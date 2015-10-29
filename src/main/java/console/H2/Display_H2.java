@@ -1,4 +1,4 @@
-package console;
+package console.H2;
 
 import model.User;
 
@@ -8,7 +8,7 @@ import java.util.Optional;
 /**
  * Created by Paul on 22.10.2015.
  */
-public class Display {
+public class Display_H2 {
     public void createHeader(){
         System.out.println("\n\t\t\t\t  ID\tEPOST\t\t\t\tPASSORD\t\t\tJOBBTYPE\n******************************************************************");
     }

@@ -1,23 +1,26 @@
-package infrastructure;
+package infrastructure.topic;
 
-import infrastructure.location.LocationDAO;
+import infrastructure.location.H2TopicQualifier;
 import model.Location;
+import model.Topic;
+import model.User;
 
 import javax.annotation.PreDestroy;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by Paul on 22.10.2015.
  */
-@H2LocationQualifier
-public class H2LocationDAO  {
+@H2TopicQualifier
+public class H2TopicDAO implements TopicDao{
 
     private static Connection connection;
 
 
-    public H2LocationDAO() {
+    public H2TopicDAO() {
         connectToH2();
     }
 
@@ -43,4 +46,28 @@ public class H2LocationDAO  {
     }
 
 
+    @Override
+    public boolean registerTopic(Topic topic) {
+        return false;
+    }
+
+    @Override
+    public Topic getTopicById(int id) {
+        return null;
+    }
+
+    @Override
+    public List<User> getAllRegisteredUserByTopic(Topic topic) {
+        return null;
+    }
+
+    @Override
+    public boolean createNewLocation(Location location) {
+        return false;
+    }
+
+    @Override
+    public Location getLocationById(int id) {
+        return null;
+    }
 }

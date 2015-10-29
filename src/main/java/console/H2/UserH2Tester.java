@@ -1,4 +1,4 @@
-package console;
+package console.H2;
 
 import infrastructure.H2DAOQualifier;
 import infrastructure.user.UserDAO;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class UserH2Tester {
 
     //PRINT OUT
-    private Display display = new Display();
+    private Display_H2 displayH2 = new Display_H2();
 
     @Inject
     @H2DAOQualifier
@@ -26,7 +26,7 @@ public class UserH2Tester {
     }
     public void execute(){
         System.out.println("-----H2 PRINTOUT:-----------------------------------------------");
-        display.createHeader();
+        displayH2.createHeader();
         createUserH2(3, "ola@yahoo.no", "passord8", Type.STUDENT);
         createUserH2(4, "Gun@yahoo.no", "passord2", Type.TEACHER);
         createUserH2(5, "kei@yahoo.no", "passord3", Type.STUDENT);
@@ -55,7 +55,7 @@ public class UserH2Tester {
 
             userDAO.createUser(user);
             if(!userDAO.getAllUsers().isEmpty()) {
-                display.createUserH2(user);
+                displayH2.createUserH2(user);
             }
 
             return true;
@@ -68,7 +68,7 @@ public class UserH2Tester {
         if (user != null) {
 
             userDAO.updateUser(user);
-            display.updateUserH2(user);
+            displayH2.updateUserH2(user);
             return true;
         } else
             return false;
@@ -76,7 +76,7 @@ public class UserH2Tester {
 
     public Optional<User> getUserByIDH2(int id) {
         if (id != 0) {
-            display.getUserByIdH2(userDAO.getUserById(id));
+            displayH2.getUserByIdH2(userDAO.getUserById(id));
             return userDAO.getUserById(id);
         } else
             return null;
@@ -84,14 +84,14 @@ public class UserH2Tester {
 
     public List<User> getAllUsersH2() {
 
-        display.getAllUsersH2(userDAO.getAllUsers());
+        displayH2.getAllUsersH2(userDAO.getAllUsers());
 
         return userDAO.getAllUsers();
 
     }
 
     public boolean deleteAUserH2(int id) {
-        display.deleteUserH2(id);
+        displayH2.deleteUserH2(id);
         return id != 0 && userDAO.deleteUser(id);
     }
 

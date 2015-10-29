@@ -4,12 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Paul on 23.10.2015.
  */
-public class JPADAOTest {
+public class H2UserDAOIT {
 
     @Before
     public void setUp() throws Exception {
@@ -18,6 +16,11 @@ public class JPADAOTest {
 
     @After
     public void tearDown() throws Exception {
+
+    }
+
+    @Test
+    public void testCloseConnectionToH2() throws Exception {
 
     }
 

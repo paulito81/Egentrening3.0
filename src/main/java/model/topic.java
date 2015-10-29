@@ -12,18 +12,20 @@ import java.util.List;
 @Entity
 public class Topic {
 
+
     @Id
     int id;
     @NotNull
     String name;
 
-    @Min(0) @Max(100)
+    @Min(0)
+    @Max(100)
     @ManyToMany
     @JoinTable
     List<User> numberOfUsers;
 
     @ManyToOne
-    @JoinTable
+    @JoinColumn(name = "FK_LOCATION_ID")
     Location location;
 
     public Topic(int id, String name, List<User> numberOfUsers) {
@@ -32,12 +34,12 @@ public class Topic {
         this.numberOfUsers = numberOfUsers;
     }
 
-    public Topic(int id, String name){
+    public Topic(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Topic(){
+    public Topic() {
 
     }
 
@@ -67,7 +69,15 @@ public class Topic {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "Topic{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", numberOfUsers=" + numberOfUsers +
+                ", location=" + location +
+                '}';
+    }
 
 
 }

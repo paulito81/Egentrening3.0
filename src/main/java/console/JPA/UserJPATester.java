@@ -1,6 +1,4 @@
-package console;
-
-import model.User;
+package console.JPA;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
