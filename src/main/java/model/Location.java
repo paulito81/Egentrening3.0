@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
  * Created by Paul on 22.10.2015.
  */
 @Entity
+
 public class Location {
 
     @Id

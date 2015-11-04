@@ -1,6 +1,6 @@
 package console.H2;
 
-import infrastructure.H2DAOQualifier;
+import infrastructure.user.qualifier.H2DAOQualifier;
 import infrastructure.user.UserDAO;
 import model.Type;
 import model.User;
@@ -21,10 +21,11 @@ public class UserH2Tester {
     @H2DAOQualifier
     private UserDAO userDAO;
 
-    UserH2Tester(){
+    UserH2Tester() {
 
     }
-    public void execute(){
+
+    public void execute() {
         System.out.println("-----H2 PRINTOUT:-----------------------------------------------");
         displayH2.createHeader();
         createUserH2(3, "ola@yahoo.no", "passord8", Type.STUDENT);
@@ -54,10 +55,9 @@ public class UserH2Tester {
             User user = new User(id, email, password, workType);
 
             userDAO.createUser(user);
-            if(!userDAO.getAllUsers().isEmpty()) {
+            if (!userDAO.getAllUsers().isEmpty()) {
                 displayH2.createUserH2(user);
             }
-
             return true;
 
         } else

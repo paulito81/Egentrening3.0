@@ -1,11 +1,11 @@
 package infrastructure.topic;
 
+import infrastructure.user.qualifier.JPAUserQualifier;
 import model.Location;
 import model.Topic;
-import model.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.annotation.PreDestroy;
+import javax.persistence.*;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,39 +13,53 @@ import java.util.List;
  * Created by Paul on 22.10.2015.
  */
 
-
-public class JPATopicDAO implements TopicDao{
+@JPAUserQualifier
+public class JPATopicDAO implements TopicDao {
 
     @PersistenceContext(unitName = "user")
     private EntityManager entityManager;
+    private EntityManagerFactory factory;
 
 
     public JPATopicDAO() throws ClassNotFoundException, SQLException {
+        factory = Persistence.createEntityManagerFactory("user");
+        entityManager = factory.createEntityManager();
+    }
 
+    JPATopicDAO(EntityManager entityManager){
+        this.entityManager =entityManager;
     }
 
     @Override
-    public boolean registerTopic(Topic topic) {
-        return false;
+    public Topic registerTopic(Topic topic) {
+        entityManager.persist(topic);
+        return topic;
     }
 
+    @PreDestroy
+    private void close(){
+        entityManager.close();
+        factory.close();
+    }
     @Override
     public Topic getTopicById(int id) {
-        return null;
+        return entityManager.find(Topic.class, id);
     }
 
     @Override
-    public List<User> getAllRegisteredUserByTopic(Topic topic) {
-        return null;
+    public List<Topic> getAllRegisteredUserByTopic() {
+        TypedQuery<Topic> query = entityManager.createNamedQuery("Topic.getAllUsers", Topic.class);
+        return query.getResultList();
     }
 
     @Override
-    public boolean createNewLocation(Location location) {
-        return false;
+    public Location createNewLocation(Location location) {
+        entityManager.persist(location);
+        return location;
     }
 
     @Override
     public Location getLocationById(int id) {
-        return null;
+        return entityManager.find(Location.class, id);
     }
 }

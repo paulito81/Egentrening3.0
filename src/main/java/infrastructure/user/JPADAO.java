@@ -1,6 +1,6 @@
-package infrastructure;
+package infrastructure.user;
 
-import infrastructure.user.UserDAO;
+import infrastructure.user.qualifier.JPAUserQualifier;
 import model.User;
 
 import javax.annotation.PreDestroy;
@@ -12,7 +12,7 @@ import java.util.Optional;
 /**
  * Created by Paul on 22.10.2015.
  */
-@JPADAOQualifier
+@JPAUserQualifier
 public class JPADAO implements UserDAO {
     @PersistenceContext(unitName = "user")
     private EntityManagerFactory factory;

@@ -10,10 +10,17 @@ import java.util.List;
  * Created by Paul on 23.10.2015.
  */
 @Entity
+@NamedQueries(value = {
+        @NamedQuery(name = "Topic.getAllUsers", query = "select t from Topic t"),
+        @NamedQuery(name = "Topic.deleteTopic", query = "delete from Topic t where t.id = :id "),
+
+})
+@SequenceGenerator(name = "Topic.sequence", sequenceName = "SEQ_USER", initialValue = 50)
 public class Topic {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Topic.sequence")
     int id;
     @NotNull
     String name;

@@ -2,7 +2,6 @@ package infrastructure.topic;
 
 import model.Location;
 import model.Topic;
-import model.User;
 
 import java.util.List;
 
@@ -11,12 +10,12 @@ import java.util.List;
  */
 public interface TopicDao {
 
-    boolean registerTopic(Topic topic);
+    Topic registerTopic(Topic topic);
     Topic getTopicById(int id);
-    List<User> getAllRegisteredUserByTopic(Topic topic);
+    List<Topic> getAllRegisteredUserByTopic();
 
     //TODO one interface topic + location
-    boolean createNewLocation(Location location );
+    Location createNewLocation(Location location );
     Location getLocationById(int id);
 
 }
