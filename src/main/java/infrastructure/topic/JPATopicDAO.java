@@ -60,6 +60,7 @@ public class JPATopicDAO implements TopicDao {
 
     @Override
     public Location getLocationById(int id) {
+
         return entityManager.find(Location.class, id);
     }
 }

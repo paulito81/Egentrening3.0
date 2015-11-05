@@ -13,8 +13,6 @@ public interface TopicDao {
     Topic registerTopic(Topic topic);
     Topic getTopicById(int id);
     List<Topic> getAllRegisteredUserByTopic();
-
-    //TODO one interface topic + location
     Location createNewLocation(Location location );
     Location getLocationById(int id);
 

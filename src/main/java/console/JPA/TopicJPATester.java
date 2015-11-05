@@ -1,14 +1,11 @@
 package console.JPA;
 
 import infrastructure.location.JPATopicQualifier;
-import infrastructure.topic.TopicDao;
+import infrastructure.topic.JPATopicDAO;
 import model.Location;
 import model.Topic;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,12 +16,11 @@ public class TopicJPATester {
 
     @Inject
     @JPATopicQualifier
-    private TopicDao topicDao;
+    private JPATopicDAO jpaTopicDAO;
 
 
     public TopicJPATester()throws ClassNotFoundException, SQLException {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("user");
-        EntityManager entityManager = factory.createEntityManager();
+        jpaTopicDAO = new JPATopicDAO();
     }
 
     public void execute(){
@@ -51,7 +47,8 @@ public class TopicJPATester {
 
     public boolean registerTopic(Topic topic){
         if(topic !=null) {
-             topicDao.registerTopic(topic);
+
+            jpaTopicDAO.registerTopic(topic);
              return true;
         }
         else
@@ -60,31 +57,31 @@ public class TopicJPATester {
 
     public boolean getTopicById(int id){
         if(id !=0){
-            topicDao.getTopicById(id);
+            jpaTopicDAO.getTopicById(id);
             return true;
         }else
             return false;
     }
 
-    public List<Topic> getAllRegisteredUserByTopic(){
-        return topicDao.getAllRegisteredUserByTopic();
+    public List<Topic> getAllRegisteredUserByTopic()
+    {
+        return jpaTopicDAO.getAllRegisteredUserByTopic();
     }
 
     public boolean createNewLocation(Location location ){
         if(location!=null){
-            topicDao.createNewLocation(location);
+            jpaTopicDAO.createNewLocation(location);
             return true;
         }else
             return false;
     }
 
-    public boolean getLocationById(int id){
+    public Location getLocationById(int id){
         if(id !=0){
-            getLocationById(id);
-            return true;
+           return jpaTopicDAO.getLocationById(id);
         }
         else
-            return false;
+            return null;
 
     }
 }

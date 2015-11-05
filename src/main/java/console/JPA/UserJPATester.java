@@ -1,14 +1,11 @@
 package console.JPA;
 
-import infrastructure.user.UserDAO;
+import infrastructure.user.JPAUserDAO;
 import infrastructure.user.qualifier.JPAUserQualifier;
 import model.Type;
 import model.User;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -19,11 +16,10 @@ import java.util.Optional;
 public class UserJPATester {
     @Inject
     @JPAUserQualifier
-    private UserDAO userDAO;
+    private JPAUserDAO userDAO;
 
     public UserJPATester()throws ClassNotFoundException, SQLException{
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("user");
-        EntityManager entityManager = factory.createEntityManager();
+        userDAO = new JPAUserDAO();
     }
 
     public void execute() {
@@ -81,4 +77,6 @@ public class UserJPATester {
     public boolean deleteAUser(int id) {
         return id != 0 && userDAO.deleteUser(id);
     }
+
+
 }

@@ -13,18 +13,18 @@ import java.util.Optional;
  * Created by Paul on 22.10.2015.
  */
 @JPAUserQualifier
-public class JPADAO implements UserDAO {
+public class JPAUserDAO implements UserDAO {
     @PersistenceContext(unitName = "user")
     private EntityManagerFactory factory;
     private EntityManager entityManager;
 
 
-    public JPADAO() throws ClassNotFoundException, SQLException {
+    public JPAUserDAO() throws ClassNotFoundException, SQLException {
         factory = Persistence.createEntityManagerFactory("user");
         entityManager = factory.createEntityManager();
     }
 
-    JPADAO(EntityManager entityManager) {
+    JPAUserDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
